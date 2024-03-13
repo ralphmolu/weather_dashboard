@@ -10,8 +10,8 @@ var citySearchURL = `https:api.openweathermap.org/data/2.5/forecast?q=${city},${
 // this function takes the user input, fetches the coordinates of the city entered and returns the weather using the coordinates
 function getWeather(){
 
- //empty weather info
- $("#currentWeatherData").empty();
+ //clear existing data in the container
+ $("#currentWeatherContainer").empty();
  $("#forecasstData").empty();
 
  var cityInput = $("#cityInput").val();
@@ -60,15 +60,27 @@ fetch(citySearchURL)
         var currentHumidity = $("<div>").text("Humidity: " + data.list[0].main.humidity + " %");
 
         //append all API endpoints onto web app
-        $("#currentWeatherData").append(cityName);
-        $("#currentWeatherData").append(" (" + simplifiedDate + ")" );
-        $("#currentWeatherData").append(icon);
-        $("#currentWeatherData").append(currentTemp);
-        $("#currentWeatherData").append(currentWindSpeed);
-        $("#currentWeatherData").append(currentHumidity);
+        $("#currentWeatherContainer").append(cityName);
+        $("#currentWeatherContainer").append(" (" + simplifiedDate + ")" );
+        $("#currentWeatherContainer").append(icon);
+        $("#currentWeatherContainer").append(currentTemp);
+        $("#currentWeatherContainer").append(currentWindSpeed);
+        $("#currentWeatherContainer").append(currentHumidity);
 
-        
+        //generating forecast weather cards
+        for (var i = 0; i < 5; i++){
 
+            var dailyForecastCard = $("<div>");
+            var forecastData = data.list[i];
+
+            //retreive the temp, the humidity, the wind speed, the date and the icon
+            var forecastTemp = forecastData.main.temp;
+            var forecastHumidity = forecastData.main.humity;
+            var forecastWindSpeed = forecastData.wind.speed;
+
+            // var forecastDate = 
+
+        }
 
         console.log(data.city.name +" (" + simplifiedDate + ")" );
         console.log("Temp: " + data.list[0].main.temp + " °F");
