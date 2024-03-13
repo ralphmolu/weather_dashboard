@@ -8,7 +8,15 @@ var citySearchURL = `https:api.openweathermap.org/data/2.5/forecast?q=${city},${
 
 
 // this function takes the user input, fetches the coordinates of the city entered and returns the weather using the coordinates
-// function getWeather(){}
+function getWeather(){
+
+ //empty weather info
+ $("#currentWeatherData").empty();
+ $("#forecasstData").empty();
+
+ var cityInput = $("#cityInput").val();
+ var icon =$("<img>");
+
 fetch(citySearchURL)
 .then(function(response){
     return response.json();
@@ -21,12 +29,15 @@ fetch(citySearchURL)
     var lat = data.city.coord.lat;
     
     // using the geolocation to pull weather information
-    var queryURL = `https://api.openweathermap.org/data/2.5/forecast?lat=${lat}&lon=${lon}&appid=${APIKey}`;
+    var queryURL = `https://api.openweathermap.org/data/2.5/forecast?lat=${lat}&lon=${lon}&units=imperial&appid=${APIKey}`;
+
     fetch(queryURL)
     .then(function(response){
         return response.json();
     })
     .then(function(data){
+
+        
 
         //display the date in simplified format from Unix Timestamp conversion
         const date = new Date(data.list[0].dt * 1000); // convert unix seconds to milliseconds and store under Date object instance
@@ -38,8 +49,29 @@ fetch(citySearchURL)
 
         var simplifiedDate = `${month}/${day}/${year}`;
 
+        var weatherIcon = data.list[0].weather[0].icon;
+        var iconSrc = "http://openweathermap.org/img/wn/" + weatherIcon + ".png";
+        icon.attr("src", iconSrc);
+
+        //create html tags, insert text from API response and store them in variables
+        var cityName = $("<h3>").text(data.city.name);
+        var currentTemp = $("<div>").text("Temp: " + data.list[0].main.temp + " °F");
+        var currentWindSpeed = $("<div>").text("Wind: " + data.list[0].wind.speed + " MPH");
+        var currentHumidity = $("<div>").text("Humidity: " + data.list[0].main.humidity + " %");
+
+        //append all API endpoints onto web app
+        $("#currentWeatherData").append(cityName);
+        $("#currentWeatherData").append(" (" + simplifiedDate + ")" );
+        $("#currentWeatherData").append(icon);
+        $("#currentWeatherData").append(currentTemp);
+        $("#currentWeatherData").append(currentWindSpeed);
+        $("#currentWeatherData").append(currentHumidity);
+
+        
+
+
         console.log(data.city.name +" (" + simplifiedDate + ")" );
-        console.log("Temp: " + data.list[0].main.temp + " °K");
+        console.log("Temp: " + data.list[0].main.temp + " °F");
         console.log("Wind: " + data.list[0].wind.speed + " MPH");
         console.log("Humidity: " + data.list[0].main.humidity + " %");
         console.log("lat: " + lat)
@@ -54,4 +86,6 @@ fetch(citySearchURL)
    
     
 });
+}
+getWeather();
 
