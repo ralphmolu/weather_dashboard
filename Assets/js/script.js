@@ -1,4 +1,8 @@
 
+$('form').on('submit', function(event) {
+    event.preventDefault();
+
+
 const APIKey = '48d2564f931d9d89947234ab9a175583';
 let countryCode;
 
@@ -62,9 +66,9 @@ function displaySearchHistory(){
 }
 
 //handle clicks on previous search items
-$("#previousSearches").on("click", 'button', function(){
-    var cityInput = 
-    $("cityInput").val($(this).text());
+$("#previousSearches").on("click", "button", function(event){
+    event.preventDefault();
+    $("#cityInput").val($(this).text());
     getWeather();
 })
 
@@ -165,21 +169,11 @@ function getWeather() {
 
                     }
 
-                    console.log(data.city.name + " (" + simplifiedDate + ")");
-                    console.log("Temp: " + data.list[0].main.temp + " °F");
-                    console.log("Wind: " + data.list[0].wind.speed + " MPH");
-                    console.log("Humidity: " + data.list[0].main.humidity + " %");
-
 
                 })
-
-
-
-
-            //create 
 
 
         });
 }
 
-
+});
