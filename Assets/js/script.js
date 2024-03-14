@@ -1,6 +1,5 @@
 
 const APIKey = '48d2564f931d9d89947234ab9a175583';
-let city = 'Durham';
 let countryCode;
 
 
@@ -39,10 +38,35 @@ function saveSearch(cityName){
     }
 
     localStorage.setItem('searchHistory', JSON.stringify(searchHistory));
-    
+    displaySearchHistory();
 
 }
 
+function displaySearchHistory(){
+    var previousSearches = $("#previousSearches");
+    var searchHistory = []; // empty array that will store search history
+    var storedHistory = localStorage.getItem('searchHistory'); // retrieve stored history.
+    previousSearches.empty()
+
+    if(storedHistory !== null ){
+        searchHistory = JSON.parse(localStorage.getItem('searchHistory'));
+    }
+
+    // loop through each element in searchHistory and display
+    searchHistory.forEach(function(city){
+        var searchHistoryEl = $(`<button>${city}</button>`);
+        searchHistoryEl.addClass("btn btn-secondary w-100")
+        previousSearches.append(searchHistoryEl);
+    }
+    )
+}
+
+//handle clicks on previous search items
+$("#previousSearches").on("click", 'button', function(){
+    var cityInput = 
+    $("cityInput").val($(this).text());
+    getWeather();
+})
 
 // this function takes the user input, fetches the coordinates of the city entered and returns the weather using the coordinates
 function getWeather() {
