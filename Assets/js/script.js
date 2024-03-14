@@ -51,7 +51,7 @@ fetch(citySearchURL)
 
         var weatherIcon = data.list[0].weather[0].icon;
         var iconSrc = "http://openweathermap.org/img/wn/" + weatherIcon + ".png";
-        icon.attr("src", iconSrc);
+        icon.attr("src", iconSrc).attr("alt", "Weather Icon");
 
         //create html tags, insert text from API response and store them in variables
         var cityName = $("<h3>").text(data.city.name);
@@ -75,10 +75,28 @@ fetch(citySearchURL)
 
             //retreive the temp, the humidity, the wind speed, the date and the icon
             var forecastTemp = forecastData.main.temp;
-            var forecastHumidity = forecastData.main.humity;
+            var forecastHumidity = forecastData.main.humidity;
             var forecastWindSpeed = forecastData.wind.speed;
+            var newDate = new Date(forecastData.dt * 1000); // convert Unix timestamp to milliseconds
+            var forecastDate =  newDate.toLocaleDateString(); // convert date to readable format
+            var forecastIconSrc = `http://openweathermap.org/img/wn/${forecastData.weather[0].icon}.png`;
+            
 
-            // var forecastDate = 
+            //create HTML elements to display retrieved info
+            var forecastCard = $("<div>").addClass("forecastCard");
+            var displayDate = $("<h3>").addClass("card-title").text(`${forecastDate}`);
+            var displayIcon = $("<img>").attr("src", forecastIconSrc).attr("alt", "Weather Icon");
+            var displayTemp = $("<p>").addClass("card-text").text(`Temp: ${forecastTemp} °F`);
+            var displayWindSpeed = $("<p>").addClass("card-text").text(`Wind Speed: ${forecastWindSpeed} MPH`);
+            var displayHumidity = $("<p>").addClass("card-text").text(`Humidity: ${forecastHumidity} %`);
+
+            //make retrived infor visible
+            forecastCard.append(displayDate);
+            forecastCard.append(displayIcon);
+            forecastCard.append(displayTemp);
+            forecastCard.append(displayWindSpeed);
+            forecastCard.append(displayHumidity);
+            $("#forecastContainer").append(forecastCard);
 
         }
 
@@ -86,8 +104,7 @@ fetch(citySearchURL)
         console.log("Temp: " + data.list[0].main.temp + " °F");
         console.log("Wind: " + data.list[0].wind.speed + " MPH");
         console.log("Humidity: " + data.list[0].main.humidity + " %");
-        console.log("lat: " + lat)
-        console.log("lon: " + lon)
+      
 
     })
 
