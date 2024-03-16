@@ -9,8 +9,8 @@ Navigating weather conditions is crucial yet challenging, especially when planni
 
 * [App Preview 👀](#app-preview-👀)
 * [Code-Snippet 💻](#code-snippet-)
-* [Features✨](#features-✨)
-* [Skills-Improved](#skills-improved-🛠️)
+* [Features✨](#features-✨
+* [Skills-Improved 🛠️](#skills-improved-🛠️)
 * [Future Improvements 🔜](#future-improvements-🔜)
 * [Technologies 🔧](#technologies-🔧))
 * [License 📄](#license-📄)
@@ -18,8 +18,8 @@ Navigating weather conditions is crucial yet challenging, especially when planni
 
 
 ## App Preview 👀
+![app preview](Assets/images/image.png)
 
-![weather](![alt text](image.png))
 
 ## Features ✨
 
