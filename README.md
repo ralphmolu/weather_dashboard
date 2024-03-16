@@ -5,18 +5,6 @@
 Navigating weather conditions is crucial yet challenging, especially when planning travel. The Weather Dashboard aims to simplify this process, offering real-time weather updates and a five-day forecast for cities across the US. Utilizing the [OpenWeather API](https://openweathermap.org/api) this application provides essential weather details including temperature, wind speed and humidity. Designed for ease of use across various devices, the dashboard ensures your travel decisions are informed and well-prepared.
 
 
-## Table of Contents 📚
-
-* [App Preview 👀](#app-preview-👀)
-* [Code-Snippet 💻](#code-snippet-)
-* [Features✨](#features-✨)
-* [Skills-Improved 🛠️](#skills-improved-🛠️)
-* [Future Improvements 🔜](#future-improvements-🔜)
-* [Technologies 🔧](#technologies-🔧)
-* [License 📄](#license-📄)
-* [Author 👤](#author-👤)
-
-
 ## App Preview 👀
 ![app preview](Assets/images/image.png)
 
