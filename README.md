@@ -1,77 +1,40 @@
+# Weather-Dashboard 🌤️
 
-$('form').on('submit', function(event) {
-    event.preventDefault();
+## Description 📖
 
-
-const APIKey = '48d2564f931d9d89947234ab9a175583';
-let countryCode;
+Navigating weather conditions is crucial yet challenging, especially when planning travel. The Weather Dashboard aims to simplify this process, offering real-time weather updates and a five-day forecast for cities across the US. Utilizing the [OpenWeather API](https://openweathermap.org/api) this application provides essential weather details including temperature, wind speed and humidity. Designed for ease of use across various devices, the dashboard ensures your travel decisions are informed and well-prepared.
 
 
-$("#searchBtn").on('click', function(event){
-    event.preventDefault();
-    var cityInput = $("#cityInput").val();
-    saveSearch(cityInput); // update the search history
-    getWeather(); // display weather results
-});
+## Table of Contents 📚
 
-//save searched cities
-function saveSearch(cityName){
-    //prevent empty searches from being saved
-    if (!cityName){
-        return;
-    }
+* [Webpage Preview 👀](#webpage-preview-)
+* [Code-Snippet 💻](#code-snippet-)
+* [Features ✨](#custom-features-)
+* [Skill-Improved 🛠️](#skill-improved-)
+* [Future Improvements 🔜](#future-improvements-)
+* [Technologies 🔧](#technologies-)
+* [License 📄](#license-)
+* [Author 👤](#authors-)
 
-    var searchHistory = []; // empty array that will store search history
-    var storedHistory = localStorage.getItem('searchHistory'); // retrieve stored history.
 
-    // if there are items in the search history, parse them and place them in the searchHistory array
-    if (storedHistory !== null){
-        searchHistory = JSON.parse(storedHistory);
-    }
+## App Preview 👀
 
-    // prevent duplicates in the search History
-    var index = searchHistory.indexOf(cityName);
-    if (index !== -1){
-        searchHistory.splice(index, 1); // start deleting from "index", delete count 1
-    }
-    searchHistory.unshift(cityName);
+![weather](![alt text](image.png))
 
-    //control the length of searchHistory by deleteing the last entry
-    if (searchHistory.length > 8){
-        searchHistory.pop(); 
-    }
+## Features ✨
 
-    localStorage.setItem('searchHistory', JSON.stringify(searchHistory));
-    displaySearchHistory();
+- Real-Time Weather Updates: Access current weather conditions including temperature, wind speed, and humidity.
+- Five-Day Forecast: Plan ahead with a comprehensive five-day weather outlook.
+- Search History: Conveniently revisit your recent searches with one click, powered by local storage functionality.
 
-}
 
-function displaySearchHistory(){
-    var previousSearches = $("#previousSearches");
-    var searchHistory = []; // empty array that will store search history
-    var storedHistory = localStorage.getItem('searchHistory'); // retrieve stored history.
-    previousSearches.empty()
+## Code-Snippet 💻
 
-    if(storedHistory !== null ){
-        searchHistory = JSON.parse(localStorage.getItem('searchHistory'));
-    }
+JavaScript
 
-    // loop through each element in searchHistory and display
-    searchHistory.forEach(function(city){
-        var searchHistoryEl = $(`<button>${city}</button>`);
-        searchHistoryEl.addClass("btn btn-secondary w-100")
-        previousSearches.append(searchHistoryEl);
-    }
-    )
-}
+The function that fetches weather data from [OpenWeather API](https://openweathermap.org/api) and displays current and forecast weather
 
-//handle clicks on previous search items
-$("#previousSearches").on("click", "button", function(event){
-    event.preventDefault();
-    $("#cityInput").val($(this).text());
-    getWeather();
-})
-
+```JavaScript
 // this function takes the user input, fetches the coordinates of the city entered and returns the weather using the coordinates
 function getWeather() {
 
@@ -168,3 +131,75 @@ function getWeather() {
                 })
         });
 }});
+```
+
+
+Function that saves user entries in a search history
+
+```JavaScript
+function saveSearch(cityName){
+    //prevent empty searches from being saved
+    if (!cityName){
+        return;
+    }
+
+    var searchHistory = []; // empty array that will store search history
+    var storedHistory = localStorage.getItem('searchHistory'); // retrieve stored history.
+
+    // if there are items in the search history, parse them and place them in the searchHistory array
+    if (storedHistory !== null){
+        searchHistory = JSON.parse(storedHistory);
+    }
+
+    // prevent duplicates in the search History
+    var index = searchHistory.indexOf(cityName);
+    if (index !== -1){
+        searchHistory.splice(index, 1); // start deleting from "index", delete count 1
+    }
+    searchHistory.unshift(cityName);
+
+    //control the length of searchHistory by deleteing the last entry
+    if (searchHistory.length > 8){
+        searchHistory.pop(); 
+    }
+
+    localStorage.setItem('searchHistory', JSON.stringify(searchHistory));
+    displaySearchHistory();
+}
+
+```
+
+## Skill Improved 🛠️
+✔️ Server Side APIs\
+✔️ Open Weather API\
+✔️ Bootstrap\
+✔️ Font Awesome\
+✔️ jQuery
+
+## Future Improvements 🔜
+
+* Add Crime data for searched city
+* Show results of the last city search upon opening the page
+* UI/UX improvements (background image, corresponding weather audio and or animation)
+* Refactoring
+
+## Technologies 🔧
+
+* [HTML](https://developer.mozilla.org/en-US/docs/Web/HTML)
+* [CSS](https://developer.mozilla.org/en-US/docs/Web/CSS)
+* [JavaScript](https://developer.mozilla.org/en-US/docs/Web/JavaScript)
+* [jQuery](https://jquery.com/)
+* [Bootstrap](https://getbootstrap.com/)
+* [Font Awesome](https://fontawesome.com/)
+
+## License 📄
+This project is licensed under the MIT License - see the LICENSE for details.
+
+## Author 👤
+
+* **Ralph Molu** 
+
+- [Portfolio](#)
+- [Github](https://github.com/ralphmolu)
+- [LinkedIn](https://www.linkedin.com/in/ralph-molu/)
+
