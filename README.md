@@ -7,14 +7,14 @@ Navigating weather conditions is crucial yet challenging, especially when planni
 
 ## Table of Contents 📚
 
-* [Webpage Preview 👀](#webpage-preview-)
+* [App Preview 👀](#app-preview-👀)
 * [Code-Snippet 💻](#code-snippet-)
-* [Features ✨](#custom-features-)
-* [Skill-Improved 🛠️](#skill-improved-)
-* [Future Improvements 🔜](#future-improvements-)
-* [Technologies 🔧](#technologies-)
-* [License 📄](#license-)
-* [Author 👤](#authors-)
+* [Features✨](#features-✨)
+* [Skills-Improved](#skills-improved-🛠️)
+* [Future Improvements 🔜](#future-improvements-🔜)
+* [Technologies 🔧](#technologies-🔧))
+* [License 📄](#license-📄)
+* [Author 👤](#author-👤)
 
 
 ## App Preview 👀
@@ -169,7 +169,7 @@ function saveSearch(cityName){
 
 ```
 
-## Skill Improved 🛠️
+## Skills Improved 🛠️
 ✔️ Server Side APIs\
 ✔️ Open Weather API\
 ✔️ Bootstrap\
