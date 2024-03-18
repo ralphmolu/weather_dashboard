@@ -81,7 +81,7 @@ $('form').on('submit', function (event) {
 
         var cityInput = $("#cityInput").val();
         saveSearch(cityInput);
-        var citySearchURL = `https:api.openweathermap.org/data/2.5/forecast?q=${cityInput},${countryCode}&appid=${APIKey}`;
+        var citySearchURL = `https://api.openweathermap.org/data/2.5/forecast?q=${cityInput},${countryCode}&appid=${APIKey}`;
 
         var icon = $("<img>");
 
